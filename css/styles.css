@@ -385,6 +385,36 @@
     margin: 0 2rem 0 2rem;
   }
 }
+.footer {
+  margin-top: 5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1rem;
+  box-shadow: 0 5px 15px grey;
+}
+.footer .footer__copyright-title {
+  color: #08A6E4;
+  font-size: 26px;
+}
+.footer .footer__copyright-subtitle {
+  color: black;
+  font-size: 11px;
+}
+.footer .footer__social-img {
+  width: 24px;
+  margin: 0 0.4rem;
+  transition: transform 0.5s;
+}
+.footer .footer__social-img:hover {
+  transform: scale(1.2);
+}
+
+@media only screen and (min-width: 1000px) {
+  .footer {
+    padding: 1rem 8rem;
+  }
+}
 * {
   box-sizing: border-box;
   margin: 0;

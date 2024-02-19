@@ -7,6 +7,8 @@ $green: #55DFB4;
 @import 'benefits';
 @import 'prices';
 @import 'sellmore';
+@import 'footer';
+@import 'contact';
 
 * {
   box-sizing: border-box;
@@ -16,10 +18,6 @@ $green: #55DFB4;
 
 // .main {
 
-
-//   .main__section-contact {
-    
-//   }
 // }
 
 @media only screen and (min-width: 1000px) {
