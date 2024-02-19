@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OXYGENShop</title>
+    <link rel="stylesheet" href="./css/styles.css">
+    <script type="module" src="./js/main.js"></script>
+</head>
+<body>
+    <header class="header">
+        <nav class="header__nav">
+            <h1 class="header__logo">OXYGENShop</h1>
+            
+            <input id="header__menu-toggle" type="checkbox" />
+            
+            <label class='menu__button-container' for="header__menu-toggle">
+                <div class='menu-button'></div>
+            </label>
+
+            <ul class="header__nav-list">
+                <li class="header__nav-item">
+                    <a class="header__nav-link" href="#why-us">WHY US</a>
+                </li>
+                <li class="header__nav-item">
+                    <a class="header__nav-link" href="#benefits">BENEFITS</a>
+                </li>
+                <li class="header__nav-item">
+                    <a class="header__nav-link" href="#prices">PRICES</a>
+                </li>
+                <li class="header__nav-item">
+                    <a class="header__nav-link" href="#contact">CONTACT</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="main">
+        <section class="main__section-sell-more">
+            <h1 class="main__section-h1">Sell More!</h1>
+            <p class="main__section-p">Open shop on our platform and increase your sales</p>
+            <button class="main__section-btn">Open your shop</button>
+            <img class="main__section-img" src="./assets/img/background.png" alt="imagen de fondo">
+        </section>
+
+        <section id="why-us" class="main__section-whyus">
+            <h2 class="main__section-title">The most popular sales platform in country</h2>
+
+            <div id="main__content-whyus" class="main__content-whyus">
+                <div class="main__item">
+                    <div class="main__item-shape main__item-shape-red">
+                        <img class="main__item-img-person" src="./assets/img/person.svg" alt="person">
+                    </div>
+                    <strong class="main__item-strong">100000+</strong>
+                    <p class="main__item-p">daily entries</p>
+                </div>
+            
+                <div class="main__item">
+                    <div class="main__item-shape main__item-shape-blue">
+                        <img class="main__item-img-eye" src="./assets/img/eye.svg" alt="eye">
+                    </div>
+                    <strong class="main__item-strong">2000000+</strong>
+                    <p class="main__item-p">seen products<br>every day</p>
+                </div>
+            
+                <div class="main__item">
+                    <div class="main__item-shape main__item-shape-green">
+                        <img class="main__item-img-folder" src="./assets/img/folder.svg" alt="folder">
+                    </div>
+                    <strong class="main__item-strong">10000+</strong>
+                    <p class="main__item-p">added posts<br>daily</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="benefits" class="main__section-benefits">
+            <div class="benefits__item">
+                <div class="benefits__item-img">
+                  <img src="./assets/img/pc.png" alt="computer" />
+                </div>
+                <div class="benefits__item-content">
+                    <h3 class="benefits__item-h3">Be always first</h3>
+                    <p class="benefits__item-p">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+                    <hr class="benefits__item-hr-red" />
+                </div>
+            </div>
+            
+            <div class="benefits__item">
+                <div class="benefits__item-img">
+                  <img src="./assets/img/phone.png" alt="mobile" />
+                </div>
+                <div class="benefits__item-content">
+                    <h3>Your shop is where you are!</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+                    <hr class="benefits__item-hr-blue" />
+                </div>
+            </div>
+            
+            <div class="benefits__item">
+                <div class="benefits__item-img">
+                  <img src="./assets/img/trumpet.png" alt="trumpet" />
+                </div>
+                <div class="benefits__item-content">
+                    <h3>Increase recognition your brand!</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+                    <hr class="benefits__item-hr-green" />
+                </div>
+            </div>
+        </section>
+
+        <section id="prices" class="main__section-prices">
+            <div class="prices__item item-basic">
+                <p class="prices__item-title">Basic</p>
+                <p class="prices__item-price item-price-red">$10</p>
+                <p class="prices__item-offer offer-false">Limited offer</p>
+                <ul class="prices__item-list">
+                    <li class="list__item item-true">100 MB HDD</li>
+                    <li class="list__item item-true">1 Subdomain</li>
+                    <li class="list__item item-true">2 E-mails</li>
+                    <li class="list__item item-false">Two years license</li>
+                    <li class="list__item item-false">Full support</li>
+                </ul>
+                <button class="list__item-button btn-red">Begin</button>
+            </div>
+            <div class="prices__item item-professional">
+                <p class="prices__item-title">Professional</p>
+                <p class="prices__item-price item-price-blue">$25</p>
+                <p class="prices__item-offer offer-true">Limited offer</p>
+                <ul class="prices__item-list">
+                    <li class="list__item item-true">500 MB HDD</li>
+                    <li class="list__item item-true">2 Subdomains</li>
+                    <li class="list__item item-true">5 E-mails</li>
+                    <li class="list__item item-true">One year license</li>
+                    <li class="list__item item-false">Full support</li>
+                </ul>
+                <button class="list__item-button btn-blue">Begin</button>
+            </div>
+            <div class="prices__item item-premium">
+                <p class="prices__item-title">Premium</p>
+                <p class="prices__item-price item-price-green">$60</p>
+                <p class="prices__item-offer offer-true">Limited offer</p>
+                <ul class="prices__item-list">
+                    <li class="list__item item-true">2 GB HDD</li>
+                    <li class="list__item item-true">5 Subdomains</li>
+                    <li class="list__item item-true">20 E-mails</li>
+                    <li class="list__item item-true">Two years license</li>
+                    <li class="list__item item-true">Full support</li>
+                </ul>
+                <button class="list__item-button btn-green">Begin</button>
+            </div>
+        </section>
+        
+        <section id="contact" class="main__section-contact">
+            
+        </section>
+    </main>
+
+    <footer class="footer">
+        Footer
+    </footer>
+</body>
+</html>
