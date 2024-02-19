@@ -1,0 +1,47 @@
+.main__section-sell-more {
+    text-align: center;
+
+    .main__section-h1 {
+        margin: 4rem 1rem 1rem 1rem;
+        font-size: 35px;
+    }
+
+    .main__section-p {
+        font-size: 16px;
+        margin: 0 2rem 2rem 2rem;
+    }
+
+    .main__section-btn {
+        background-color: $blue;
+        color: white;
+        border: 0px;
+        padding: 0.8rem 4rem;
+        margin: 0 2rem 0 2rem;
+        border-radius: 2rem;
+        transition: transform 0.5s, box-shadow 0.5s;
+        cursor: pointer;
+
+        &:hover {
+            transform: scale(1.1);
+            box-shadow: 5px 5px 10px lighten($color: $blue, $amount: 25);
+        }
+    }
+
+    .main__section-img {
+        margin-top: 3rem;
+        margin-bottom: 1rem;
+        width: 100%;
+    }
+}
+
+@media only screen and (min-width: 1000px) {
+    .main__section-h1 {
+        margin: 5rem 1rem 1rem 1rem;
+        font-size: 49px;
+    }
+
+    .main__section-btn {
+        padding: 0.8rem 8rem;
+        margin: 0 2rem 0 2rem;
+    }
+}

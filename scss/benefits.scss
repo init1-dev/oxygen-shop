@@ -1,0 +1,46 @@
+.main__section-benefits {
+    background-color: aquamarine;
+
+    .benefits__item {
+        margin-bottom: 30px;
+    }
+
+    .benefits__item-img img {
+        width: 100px;
+        height: 100px;
+        margin-right: 20px;
+    }
+
+    // .benefits__item-content {
+
+    // }
+
+    .benefits__item-h3 {
+        color: #333;
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+
+    .benefits__item-p {
+        color: #666;
+        font-size: 16px;
+    }
+
+    .benefits__item-content hr {
+        max-width: 327.64px;
+        height: 4px;
+        border: 0;
+    }
+
+    .benefits__item-hr-red {
+        background-color: $red;
+    }
+
+    .benefits__item-hr-blue {
+        background-color: $blue;
+    }
+
+    .benefits__item-hr-green {
+        background-color: $green;
+    }
+}
