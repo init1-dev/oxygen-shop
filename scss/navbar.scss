@@ -3,6 +3,8 @@
 
     .header__logo {
         color: $blue;
+        font-family: Raleway;
+        font-weight: 300;
     }
 
     .header__nav {
@@ -32,6 +34,8 @@
     }
 
     .header__nav-link {
+        font-family: Open Sans;
+        font-size: 11px;
         text-decoration: none;
         color: black;
     }

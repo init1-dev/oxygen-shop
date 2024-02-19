@@ -3,15 +3,20 @@
 
     .main__section-h1 {
         margin: 4rem 1rem 1rem 1rem;
+        font-family: Raleway;
+        font-weight: 400;
         font-size: 35px;
     }
 
     .main__section-p {
+        font-family: Open Sans;
         font-size: 16px;
         margin: 0 2rem 2rem 2rem;
     }
 
     .main__section-btn {
+        font-family: Open Sans;
+        font-size: 16px;
         background-color: $blue;
         color: white;
         border: 0px;
@@ -28,7 +33,7 @@
     }
 
     .main__section-img {
-        margin-top: 3rem;
+        margin-top: 1rem;
         margin-bottom: 1rem;
         width: 100%;
     }
@@ -43,5 +48,9 @@
     .main__section-btn {
         padding: 0.8rem 8rem;
         margin: 0 2rem 0 2rem;
+    }
+
+    .main__section-img {
+        margin-top: 0;
     }
 }

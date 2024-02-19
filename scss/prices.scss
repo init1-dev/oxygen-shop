@@ -1,4 +1,6 @@
 .main__section-prices {
+    text-align: center;
+    margin-top: 4rem;
 
     .prices__item {
         position: relative;
@@ -14,7 +16,8 @@
 
         .prices__item-title {
             font-size: 24px;
-            font-weight: bold;
+            font-family: Raleway;
+            font-weight: 700;
             margin-bottom: 10px;
         }
 
@@ -144,14 +147,17 @@
 
 @media only screen and (min-width: 1000px) {
     .main__section-prices {
-        display: flex;
-        justify-content: space-between;
-        gap: 5%;
-        margin: 1rem 10%;
 
         .prices__item {
             width: 100%;
             margin: 0;
         }
+    }
+
+    .main__section-prices-content {
+        display: flex;
+        justify-content: space-between;
+        gap: 5%;
+        margin: 1rem 10%;
     }
 }

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+
 $blue: #08A6E4;
 $red: #FB3B64;
 $green: #55DFB4;
@@ -20,8 +22,20 @@ $green: #55DFB4;
 
 // }
 
+.main__section-title {
+  font-size: 30px;
+  font-family: Raleway;
+  font-weight: 400;
+  margin: 1rem 1rem 0rem 1rem;
+}
+
 @media only screen and (min-width: 1000px) {
   body {
     min-width: 320px;
+  }
+
+  .main__section-title {
+    font-size: 36px;
+    margin-bottom: 3rem;
   }
 }
