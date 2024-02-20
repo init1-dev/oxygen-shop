@@ -40,9 +40,36 @@ $green: #55DFB4;
   transition: width 0.3s ease;
 }
 
+#returnToTopButton {
+  font-family: Raleway;
+  font-weight: 700;
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 15px 20px;
+  background-color: rgba(0, 123, 255, 0.8);
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+  color: #fff;
+  border: none;
+  border-radius: 45%;
+  cursor: pointer;
+  z-index: 9999;
+  transition: transform 0.2s ease 0s;
+}
+
 @media only screen and (min-width: 1000px) {
   body {
     min-width: 320px;
+  }
+
+  #returnToTopButton:hover {
+    background-color: #0056b3;
+    transform: translateY(-4px);
+  }
+  
+  #returnToTopButton:active {
+    transform: translateY(0px);
   }
 
   .main__section-title {
