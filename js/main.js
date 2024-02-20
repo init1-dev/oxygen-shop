@@ -15,3 +15,15 @@ document.addEventListener("click", function(event) {
         menuToggle.checked = false;
     }
 });
+
+function cambiarImagen() {
+    const imagen = document.getElementById('pc-image');
+    if (window.innerWidth > 1000) { // Cambiar el valor según la condición deseada
+        imagen.src = './assets/img/pcshape.png';
+    } else {
+        imagen.src = './assets/img/pcshape2.png';
+    }
+}
+
+window.addEventListener('resize', cambiarImagen);
+window.addEventListener('load', cambiarImagen);
