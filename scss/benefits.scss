@@ -1,5 +1,5 @@
 .main__section-benefits {
-    background-color: #7e7e7e;
+    background-color: #F7F7F7;
     padding: 1.2rem 1.5rem 1.2rem 1.5rem;
 
     .benefits__item {
@@ -7,7 +7,7 @@
         margin-bottom: 30px;
         display: block;
         padding: 2rem 2rem 2rem 2rem;
-        margin: 1rem 0;
+        margin: 2rem 0;
         background-color: white;
         border-radius: 0.3rem;
     }
@@ -33,18 +33,6 @@
 
     .img-pc {
         position: relative;
-
-        &::after {
-            content: "";
-            width: 90px;
-            height: 90px;
-            left: 60%;
-            top: -20px;
-            background: $red;
-            position: absolute;
-            border-radius: 50%;
-            transform: rotate(-45deg);
-        }
     }
 
     .img-phone {
@@ -78,6 +66,7 @@
         font-weight: 400;
         font-size: 14px;
         text-align: left;
+        margin-bottom: 1rem;
     }
 
     .benefits__item-content hr {
