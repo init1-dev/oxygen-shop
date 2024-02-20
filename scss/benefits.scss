@@ -41,6 +41,7 @@
     // }
 
     .img-trumpet {
+        width: auto;
         background-color: $green;
         padding: 1rem;
         border-radius: 0 0 0.3rem 0.3rem;
@@ -107,20 +108,20 @@
             justify-content: space-around;
             align-items: center;
             margin: 2rem 15%;
-            padding: 0rem 0rem 0rem 0rem;
         }
 
         .item-separated {
             background-color: white;
             justify-content: space-between;
+            padding: 0 0 0 0;
         }
 
         .benefits__item-content {
-            width: 50%;
+            width: 60%;
         }
 
         .content-separated {
-            width: 50%;
+            width: 60%;
         }
 
         .benefits__item-img img {
