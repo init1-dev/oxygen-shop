@@ -165,7 +165,46 @@
         
         <!--    CONTACT     -->
         <section id="contact" class="main__section-contact">
-            
+            <div class="section__contact-info-container">
+                <div class="section__contact-info-block">
+                    <h1 class="contact__info-title">Any questions?</h1>
+                    <h4 class="contact__info-subtitle">Leave your email address or call us!</h4>
+                </div>
+                <div class="section__contact-info-block">
+                    <span class="contact__info-p">
+                        <img class="contact__info-img" src="./assets/img/mail.svg" alt="correo electronico" />
+                        <span>init1.dev@gmail.com</span>
+                    </span>
+                    <span class="contact__info-p">
+                        <img class="contact__info-img" src="./assets/img/phone.svg" alt="telefono" />
+                        <span>+34 123 456 789</span>
+                    </span>
+                </div>
+            </div>
+
+            <form class="contact__form">
+                <label for="form-name" class="form__label input-name">
+                    NAME
+                    <input id="form-name" class="form__input" type="text" name="person" required />
+                </label>
+
+                <label for="form-email" class="form__label input-email">
+                    EMAIL
+                    <input id="form-email" class="form__input" type="email" name="email" required />
+                </label>
+
+                <label class="form__label form__label-checkbox" id="accept">
+                    <input class="form__checkbox" type="checkbox" name="accept" />
+                    <span class="custom-checkbox"></span>
+                    <p class="form__label__p">I hereby give consent for my personal data included in my application to be processed for the purposes of the recruitment process under the European Parliament’s and Council of the European Union Regulation on the Protection of Natural Persons as of 27 April 2016, with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (Data Protection Directive)</p>
+                </label>
+                
+                <div class="form__submit-container">
+                    <button class="form__submit">
+                        Send
+                    </button>
+                </div>
+            </form>
         </section>
     </main>
 
