@@ -2,9 +2,18 @@
     text-align: center;
     margin-top: 4rem;
 
+    .main__section-prices-content {
+        display: block;
+        margin: 20px 5px;
+    }
+
+    // .main__section-title {
+        
+    // }
+
     .prices__item {
         position: relative;
-        margin: 10% 10%;
+        margin: 4rem 5%;
         padding: 20px;
         border-radius: 8px;
         text-align: center;
@@ -59,11 +68,11 @@
             text-align: center;
 
             .list__item {
-                margin-bottom: 2rem;
+                margin-bottom: 1.2rem;
+                color: black;
             }
 
             .item-true {
-                color: #08A6E4;
 
                 &::before {
                     content: url(../assets/img/checked.svg);
@@ -73,7 +82,6 @@
             }
 
             .item-false {
-                color: #FB3B64;
 
                 &::before {
                     content: url(../assets/img/crosscheck.svg);
@@ -84,6 +92,10 @@
         }
 
         .list__item-button {
+            font-family: Open Sans;
+            font-weight: 700;
+            font-size: 13px;
+            line-height: 17.7px;
             cursor: pointer;
             color: white;
             border: 0px;
@@ -152,12 +164,16 @@
             width: 100%;
             margin: 0;
         }
-    }
 
-    .main__section-prices-content {
-        display: flex;
-        justify-content: space-between;
-        gap: 5%;
-        margin: 1rem 10%;
+        .main__section-prices-content {
+            display: flex;
+            justify-content: space-between;
+            gap: 5%;
+            margin: 1rem 10%;
+        }
+
+        // .main__section-title {
+            
+        // }
     }
 }

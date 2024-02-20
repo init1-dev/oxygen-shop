@@ -117,6 +117,55 @@
     border-bottom: 1px solid #444;
   }
 }
+.main__section-sell-more {
+  text-align: center;
+}
+.main__section-sell-more .main__section-h1 {
+  margin: 4rem 1rem 1rem 1rem;
+  font-family: Raleway;
+  font-weight: 400;
+  font-size: 35px;
+}
+.main__section-sell-more .main__section-p {
+  font-family: Open Sans;
+  font-size: 16px;
+  margin: 0 2rem 2rem 2rem;
+}
+.main__section-sell-more .main__section-btn {
+  font-family: Open Sans;
+  font-size: 16px;
+  background-color: #08A6E4;
+  color: white;
+  border: 0px;
+  padding: 0.8rem 4rem;
+  margin: 0 2rem 0 2rem;
+  border-radius: 2rem;
+  transition: transform 0.5s, box-shadow 0.5s;
+  cursor: pointer;
+}
+.main__section-sell-more .main__section-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 5px 5px 10px #71d4fa;
+}
+.main__section-sell-more .main__section-img {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  width: 100%;
+}
+
+@media only screen and (min-width: 1000px) {
+  .main__section-h1 {
+    margin: 5rem 1rem 1rem 1rem;
+    font-size: 49px;
+  }
+  .main__section-btn {
+    padding: 0.8rem 8rem;
+    margin: 0 2rem 0 2rem;
+  }
+  .main__section-img {
+    margin-top: 0;
+  }
+}
 .main__section-whyus {
   text-align: center;
 }
@@ -231,9 +280,13 @@
   text-align: center;
   margin-top: 4rem;
 }
+.main__section-prices .main__section-prices-content {
+  display: block;
+  margin: 20px 5px;
+}
 .main__section-prices .prices__item {
   position: relative;
-  margin: 10% 10%;
+  margin: 4rem 5%;
   padding: 20px;
   border-radius: 8px;
   text-align: center;
@@ -279,18 +332,13 @@
   text-align: center;
 }
 .main__section-prices .prices__item .prices__item-list .list__item {
-  margin-bottom: 2rem;
-}
-.main__section-prices .prices__item .prices__item-list .item-true {
-  color: #08A6E4;
+  margin-bottom: 1.2rem;
+  color: black;
 }
 .main__section-prices .prices__item .prices__item-list .item-true::before {
   content: url(../assets/img/checked.svg);
   width: 20px;
   margin-right: 2%;
-}
-.main__section-prices .prices__item .prices__item-list .item-false {
-  color: #FB3B64;
 }
 .main__section-prices .prices__item .prices__item-list .item-false::before {
   content: url(../assets/img/crosscheck.svg);
@@ -298,6 +346,10 @@
   margin-right: 2%;
 }
 .main__section-prices .prices__item .list__item-button {
+  font-family: Open Sans;
+  font-weight: 700;
+  font-size: 13px;
+  line-height: 17.7px;
   cursor: pointer;
   color: white;
   border: 0px;
@@ -348,60 +400,11 @@
     width: 100%;
     margin: 0;
   }
-  .main__section-prices-content {
+  .main__section-prices .main__section-prices-content {
     display: flex;
     justify-content: space-between;
     gap: 5%;
     margin: 1rem 10%;
-  }
-}
-.main__section-sell-more {
-  text-align: center;
-}
-.main__section-sell-more .main__section-h1 {
-  margin: 4rem 1rem 1rem 1rem;
-  font-family: Raleway;
-  font-weight: 400;
-  font-size: 35px;
-}
-.main__section-sell-more .main__section-p {
-  font-family: Open Sans;
-  font-size: 16px;
-  margin: 0 2rem 2rem 2rem;
-}
-.main__section-sell-more .main__section-btn {
-  font-family: Open Sans;
-  font-size: 16px;
-  background-color: #08A6E4;
-  color: white;
-  border: 0px;
-  padding: 0.8rem 4rem;
-  margin: 0 2rem 0 2rem;
-  border-radius: 2rem;
-  transition: transform 0.5s, box-shadow 0.5s;
-  cursor: pointer;
-}
-.main__section-sell-more .main__section-btn:hover {
-  transform: scale(1.1);
-  box-shadow: 5px 5px 10px #71d4fa;
-}
-.main__section-sell-more .main__section-img {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-  width: 100%;
-}
-
-@media only screen and (min-width: 1000px) {
-  .main__section-h1 {
-    margin: 5rem 1rem 1rem 1rem;
-    font-size: 49px;
-  }
-  .main__section-btn {
-    padding: 0.8rem 8rem;
-    margin: 0 2rem 0 2rem;
-  }
-  .main__section-img {
-    margin-top: 0;
   }
 }
 .footer {

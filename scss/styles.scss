@@ -5,12 +5,12 @@ $red: #FB3B64;
 $green: #55DFB4;
 
 @import 'navbar';
+@import 'sellmore';
 @import 'whyus';
 @import 'benefits';
 @import 'prices';
-@import 'sellmore';
-@import 'footer';
 @import 'contact';
+@import 'footer';
 
 * {
   box-sizing: border-box;
