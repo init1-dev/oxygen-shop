@@ -248,24 +248,53 @@
   }
 }
 .main__section-benefits {
-  background-color: aquamarine;
+  background-color: #7e7e7e;
+  padding: 1.2rem 1.5rem 1.2rem 1.5rem;
 }
 .main__section-benefits .benefits__item {
+  text-align: center;
   margin-bottom: 30px;
+  display: block;
+  padding: 2rem 1rem 2rem 1rem;
+  margin: 1rem 0;
+  background-color: white;
+  border-radius: 0.3rem;
+}
+.main__section-benefits .item-separated {
+  padding: 2rem 0 0 0;
+}
+.main__section-benefits .content-separated {
+  padding: 0 1rem 1rem 1rem;
+}
+.main__section-benefits .content-separated h3 {
+  margin-top: 0;
 }
 .main__section-benefits .benefits__item-img img {
-  width: 100px;
-  height: 100px;
-  margin-right: 20px;
+  display: inline-block;
+  width: auto;
+  height: 110px;
+}
+.main__section-benefits .img-trumpet {
+  background-color: #55DFB4;
+  padding: 1rem;
+  border-radius: 0 0 0.3rem 0.3rem;
 }
 .main__section-benefits .benefits__item-h3 {
   color: #333;
   font-size: 20px;
-  margin-bottom: 10px;
+  margin: 1rem 0 2rem 0;
+  font-family: Raleway;
+  font-weight: 400;
+  font-size: 30px;
+  text-align: left;
 }
 .main__section-benefits .benefits__item-p {
   color: #666;
   font-size: 16px;
+  font-family: Open Sans;
+  font-weight: 400;
+  font-size: 14px;
+  text-align: left;
 }
 .main__section-benefits .benefits__item-content hr {
   max-width: 327.64px;
@@ -280,6 +309,9 @@
 }
 .main__section-benefits .benefits__item-hr-green {
   background-color: #55DFB4;
+}
+.main__section-benefits .benefits-separator {
+  display: none;
 }
 
 .main__section-prices {
