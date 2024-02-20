@@ -147,31 +147,44 @@
   transform: scale(1.1);
   box-shadow: 5px 5px 10px #71d4fa;
 }
-.main__section-sell-more .main__section-img {
-  margin-top: 1rem;
+.main__section-sell-more .sell-more__img-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 3rem;
   margin-bottom: 1rem;
-  width: 100%;
+  overflow-x: hidden;
+}
+.main__section-sell-more .main__section-img {
+  height: 200px;
 }
 
 @media only screen and (min-width: 1000px) {
-  .main__section-h1 {
-    margin: 5rem 1rem 1rem 1rem;
+  .main__section-sell-more .main__section-h1 {
+    margin: 7rem 1rem 1rem 1rem;
     font-size: 49px;
   }
-  .main__section-btn {
+  .main__section-sell-more .main__section-btn {
     padding: 0.8rem 8rem;
     margin: 0 2rem 0 2rem;
   }
-  .main__section-img {
+  .main__section-sell-more .main__section-img {
     margin-top: 0;
+  }
+  .main__section-sell-more .sell-more__img-container {
+    display: block;
+    margin-top: 0;
+  }
+  .main__section-sell-more .main__section-img {
+    width: 100%;
+    height: auto;
   }
 }
 .main__section-whyus {
   text-align: center;
 }
 .main__section-whyus .main__content-whyus {
+  display: block;
   margin-bottom: 5rem;
-  text-align: center;
 }
 .main__section-whyus .main__item {
   display: flex;
@@ -227,18 +240,10 @@
 }
 
 @media only screen and (min-width: 1000px) {
-  .main__section-whyus {
-    text-align: center;
-  }
   .main__section-whyus .main__content-whyus {
     display: flex;
     justify-content: space-evenly;
     margin-bottom: 3rem;
-  }
-  .main__section-whyus .main__item-shape {
-    width: 63px;
-    height: 63px;
-    border-radius: 50%;
   }
 }
 .main__section-benefits {
@@ -452,7 +457,7 @@
   font-size: 30px;
   font-family: Raleway;
   font-weight: 400;
-  margin: 1rem 1rem 0rem 1rem;
+  margin: 1rem 2rem 0rem 2rem;
 }
 
 @media only screen and (min-width: 1000px) {
