@@ -29,6 +29,17 @@ $green: #55DFB4;
   margin: 1rem 2rem 0rem 2rem;
 }
 
+#percentageScroller {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 5px;
+  background-color: #007bff;
+  z-index: 9999;
+  transition: width 0.3s ease;
+}
+
 @media only screen and (min-width: 1000px) {
   body {
     min-width: 320px;
