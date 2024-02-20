@@ -16,7 +16,7 @@
         background-color: white;
         box-shadow: 0 3px 6px grey;
         color: black;
-        padding: 20px 5%;
+        padding: 1.8% 5%;
         margin-bottom: 1rem;
     }
 
@@ -35,9 +35,16 @@
 
     .header__nav-link {
         font-family: Open Sans;
+        font-weight: 700;
         font-size: 11px;
+        letter-spacing: 3.28px;
         text-decoration: none;
-        color: black;
+        color: #A5A5A5;
+        transition: color 0.3s ease;
+
+        &:hover {
+            color: black;
+        }
     }
 
     .menu__button-container {
