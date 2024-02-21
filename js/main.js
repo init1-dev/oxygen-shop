@@ -274,7 +274,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
 
-    // Función para validar el formato del email
+    // VALIDAR FORMATO DEL EMAIL
     function emailIsValid(email) {
       return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
     }
@@ -317,4 +317,56 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
+    // SLIDER
+    const slides = document.querySelectorAll('.slide');
+    const dotsContainer = document.querySelector('.dots-container');
+    const prevBtn = document.querySelector('.prev');
+    const nextBtn = document.querySelector('.next');
+    let slideIndex = 0;
+    
+    // SLIDE ACTUAL
+    const showSlide = (index) => {
+        if (index < 0) {
+            slideIndex = slides.length - 1;
+        } else if (index >= slides.length) {
+            slideIndex = 0;
+        } else {
+            slideIndex = index;
+        }
+    
+      // OCULTAR SLIDES Y MOSTRAR ACTUAL
+        slides.forEach((slide, i) => {
+            if (i === slideIndex) {
+                slide.style.display = 'block';
+                slide.classList.add('active');
+            } else {
+                slide.style.display = 'none';
+                slide.classList.remove('active');
+            }
+        });
+    
+      // ACTUALIZAR DOTS
+        const dots = document.querySelectorAll('.dot');
+        dots.forEach((dot, i) => {
+            dot.classList.toggle('active', i === slideIndex);
+        });
+    }
+    
+    // CREAR DOTS, _ ES UNA CONVENCION QUE INDICA QUE EL VALOR NO SE UTILIZARA
+    slides.forEach((_, i) => {
+        const dot = document.createElement('span');
+        dot.classList.add('dot');
+        dot.addEventListener('click', () => showSlide(i));
+        dotsContainer.appendChild(dot);
+    });
+    
+    // BOTONES PREV Y NEXT
+    prevBtn.addEventListener('click', () => showSlide(slideIndex - 1));
+    nextBtn.addEventListener('click', () => showSlide(slideIndex + 1));
+    
+    // AVANCE AUTOMATICO
+    setInterval(() => showSlide(slideIndex + 1), 5000);
+    
+    // MOSTRAR PRIMER SLIDE AL CARGAR LA PAGINA
+    showSlide(slideIndex);
 });
