@@ -9,7 +9,7 @@
 </head>
 <body>
     <div id="percentageScroller"></div>
-    <button id="returnToTopButton" onclick="returnToTop()">^</button>
+    <button id="returnToTopButton">^</button>
     <!--    HEADER - NAVBAR     -->
     <header class="header">
         <nav class="header__nav">
@@ -189,24 +189,25 @@
                 </div>
             </div>
 
-            <form class="contact__form">
+            <form id="contact__form" class="contact__form">
                 <label for="form-name" class="form__label input-name">
                     NAME
-                    <input id="form-name" class="form__input" type="text" name="person" required />
+                    <input id="form-name" class="form__input" type="text" name="person" placeholder="Enter your name" value="PRUEBA"/>
                 </label>
 
                 <label for="form-email" class="form__label input-email">
                     EMAIL
-                    <input id="form-email" class="form__input" type="email" name="email" required />
+                    <input id="form-email" class="form__input" type="email" name="email" placeholder="Enter your email address" value="PRUEBA@email.com"/>
                 </label>
 
                 <label class="form__label form__label-checkbox" id="accept">
-                    <input class="form__checkbox" type="checkbox" name="accept" />
-                    <span class="custom-checkbox"></span>
+                    <input id="form__checkbox" class="form__checkbox" type="checkbox" name="accept" />
+                    <span id="custom-checkbox" class="custom-checkbox"></span>
                     <p class="form__label__p">I hereby give consent for my personal data included in my application to be processed for the purposes of the recruitment process under the European Parliament’s and Council of the European Union Regulation on the Protection of Natural Persons as of 27 April 2016, with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (Data Protection Directive)</p>
                 </label>
                 
                 <div class="form__submit-container">
+                    <span id="form__submit-msg">¡Enviado!</span>
                     <button class="form__submit">
                         Send
                     </button>

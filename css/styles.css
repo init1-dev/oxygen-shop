@@ -605,6 +605,7 @@
   outline: none;
   border: 0;
   border-bottom: 1px solid #95989A;
+  transition: border 0.4s ease-in-out;
 }
 .main__section-contact .form__input:focus-visible {
   border-bottom: 1px solid #08A6E4;
@@ -633,6 +634,7 @@
   background-color: #fff;
   margin-top: 0.5rem;
   vertical-align: top;
+  transition: border 0.4s ease-in-out;
 }
 .main__section-contact .custom-checkbox::after {
   content: "✓";
@@ -659,14 +661,28 @@
   color: #707070;
 }
 .main__section-contact .form__submit-container {
-  margin-top: 1.5rem;
-  position: relative;
-  width: 100%;
-  height: 50px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-top: 2rem;
+  height: 3rem;
+}
+.main__section-contact #form__submit-msg {
+  text-align: center;
+  font-family: Open Sans;
+  font-weight: 700;
+  font-size: 13px;
+  opacity: 0;
+  grid-column: 1;
+  background-color: #25ad1e;
+  color: white;
+  padding: 0.8rem;
+  border-radius: 0.5rem;
+  transition: opacity 0.4s ease-in-out;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 }
 .main__section-contact .form__submit {
-  display: inline-block;
-  position: absolute;
+  grid-column: 2;
   right: 1rem;
   font-family: Open Sans;
   font-weight: 700;
@@ -701,9 +717,8 @@
   .main__section-contact .contact__form {
     width: 50%;
   }
-  .main__section-contact .form__submit {
-    margin-top: 0.8rem;
-    margin-right: 1.5rem;
+  .main__section-contact #form__submit-msg {
+    margin: 0 2rem;
   }
 }
 .footer {
