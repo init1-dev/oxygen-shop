@@ -7,9 +7,11 @@
         margin: 20px 5px;
     }
 
-    // .main__section-title {
-        
-    // }
+    #currency-selector {
+        padding: 1rem;
+        border-radius: 0.5rem;
+        margin: 2rem 0;
+    }
 
     .prices__item {
         position: relative;
@@ -177,6 +179,10 @@
 @media only screen and (min-width: 1000px) {
     .main__section-prices {
 
+        #currency-selector {
+            margin: 0 0 2rem 0;
+        }
+
         .prices__item {
             flex-direction: column;
             width: 100%;
@@ -211,9 +217,5 @@
             gap: 5%;
             margin: 1rem 10%;
         }
-
-        // .main__section-title {
-            
-        // }
     }
 }

@@ -13,6 +13,10 @@ const MSG_ID = 'form__submit-msg';
 const FETCH_URL_STRING = 'https://jsonplaceholder.typicode.com/users';
 // MODAL CFG
 const MODAL_LOCALSTORAGE_KEY = '__modal__Closed__';
+// CURRENCIES (usd, eur or gbp)
+const DEFAULT_CURRENCY = 'usd';
+
+let currencies = {};
 
 // FUNCIONES
 const returnToTop = () => {
@@ -70,8 +74,37 @@ const fetchUrl = (url, formData) => {
       });
 }
 
+const fetchCurrencies = () => {
+    fetch(`https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/${DEFAULT_CURRENCY}.json`)
+    .then((response) => response.json())
+    .then((data) => {
+        currencies = {
+            usd: {
+                basic: '$10',
+                pro: '$25',
+                premium: '$60'
+            },
+            eur: {
+                basic: `${parseFloat(10 * data.usd.eur).toFixed(2)}€`,
+                pro: `${parseFloat(25 * data.usd.eur).toFixed(2)}€`,
+                premium: `${parseFloat(60 * data.usd.eur).toFixed(2)}€`
+            },
+            gbp: {
+                basic: `${parseFloat(10 * data.usd.gbp).toFixed(2)}£`,
+                pro: `${parseFloat(25 * data.usd.gbp).toFixed(2)}£`,
+                premium: `${parseFloat(60 * data.usd.gbp).toFixed(2)}£`
+            }
+        }
+        console.log(currencies);
+    })
+    .catch((error) => {
+        console.error("Error al obtener los tipos de cambio:", error);
+    });
+}
+
 // LISTENERS
 document.addEventListener("DOMContentLoaded", () => {
+    fetchCurrencies();
     
     // CONTROL DEL MENU MOVIL
     const menuToggle = document.getElementById("header__menu-toggle");
@@ -245,4 +278,43 @@ document.addEventListener("DOMContentLoaded", () => {
     function emailIsValid(email) {
       return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
     }
+
+    // PRICE CHANGER
+    const currencySelector = document.getElementById("currency-selector");
+
+    for (let i = 0; i < currencySelector.options.length; i++) {
+      if (currencySelector.options[i].value === DEFAULT_CURRENCY) {
+        currencySelector.options[i].selected = true;
+        break;
+      } else {
+          currencySelector.options[1].selected = true;
+      }
+    }
+
+    currencySelector.addEventListener("change", function () {
+        const selectedCurrency = this.value;
+
+        const basicPrice = document.querySelector(".item-price-red");
+        const proPrice = document.querySelector(".item-price-blue");
+        const premiumPrice = document.querySelector(".item-price-green");
+
+        switch (selectedCurrency) {
+            case "usd":
+                basicPrice.textContent = currencies.usd.basic;
+                proPrice.textContent = currencies.usd.pro;
+                premiumPrice.textContent = currencies.usd.premium;
+            break;
+            case "eur":
+                basicPrice.textContent = currencies.eur.basic;
+                proPrice.textContent = currencies.eur.pro;
+                premiumPrice.textContent = currencies.eur.premium;
+            break;
+            case "gbp":
+                basicPrice.textContent = currencies.gbp.basic;
+                proPrice.textContent = currencies.gbp.pro;
+                premiumPrice.textContent = currencies.gbp.premium;
+            break;
+        }
+    });
+
 });

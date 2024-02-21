@@ -403,6 +403,11 @@
   display: block;
   margin: 20px 5px;
 }
+.main__section-prices #currency-selector {
+  padding: 1rem;
+  border-radius: 0.5rem;
+  margin: 2rem 0;
+}
 .main__section-prices .prices__item {
   position: relative;
   margin: 3rem 5%;
@@ -529,6 +534,9 @@
 }
 
 @media only screen and (min-width: 1000px) {
+  .main__section-prices #currency-selector {
+    margin: 0 0 2rem 0;
+  }
   .main__section-prices .prices__item {
     flex-direction: column;
     width: 100%;
