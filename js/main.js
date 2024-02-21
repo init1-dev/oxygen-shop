@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // BOTON TO TOP
     window.addEventListener('scroll', function() {
         let returnToTopButton = document.getElementById('returnToTopButton');
-        if (window.scrollY > 300) {
+        if (window.scrollY > 500) {
             returnToTopButton.style.display = 'block';
         } else {
             returnToTopButton.style.display = 'none';

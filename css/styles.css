@@ -16,7 +16,7 @@
 }
 .header .header__nav {
   display: flex;
-  height: 60px;
+  height: 3.75rem;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
@@ -32,7 +32,12 @@
 }
 .header .header__nav-list > li {
   margin: 0 1rem;
-  overflow: hidden;
+  text-decoration: none;
+}
+.header .header__nav-list > li:hover {
+  text-decoration: underline solid #08A6E4;
+  text-decoration-thickness: 3px;
+  text-underline-offset: 1.4rem;
 }
 .header .header__nav-link {
   position: relative;
@@ -46,16 +51,6 @@
 }
 .header .header__nav-link:hover {
   color: black;
-}
-.header .header__nav-link:hover::after {
-  position: absolute;
-  content: "";
-  height: 3px;
-  width: 100%;
-  left: 0;
-  bottom: -22px;
-  background-color: #08A6E4;
-  z-index: 999;
 }
 .header .menu__button-container {
   display: none;
@@ -137,6 +132,10 @@
     width: 100%;
     color: white;
     background-color: white;
+    overflow: hidden;
+  }
+  .header .header__nav-list > li:hover {
+    text-decoration: none;
   }
   .header .header__nav-list > li:not(:last-child) {
     border-bottom: 1px solid #444;
@@ -350,7 +349,7 @@
 
 @media only screen and (min-width: 1000px) {
   .main__section-benefits {
-    padding: 1rem 1.5rem 3rem 1.5rem;
+    padding: 1rem 1.5rem 1rem 1.5rem;
   }
   .main__section-benefits .benefits__item {
     display: flex;
