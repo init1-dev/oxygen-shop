@@ -10,6 +10,9 @@ const CONTACT_FORM_EMAIL_ID = 'form-email';
 const CONTACT_FORM_CHECKBOX_ID = 'form__checkbox';
 const CUSTOM_CHECKBOX_ID = 'custom-checkbox';
 const MSG_ID = 'form__submit-msg';
+const FETCH_URL_STRING = 'https://jsonplaceholder.typicode.com/users';
+// MODAL CFG
+const MODAL_LOCALSTORAGE_KEY = '__modal__Closed__';
 
 // FUNCIONES
 const returnToTop = () => {
@@ -41,6 +44,30 @@ const successMsg = () => {
       setTimeout(function() {
         msgSpan.style.opacity = 0;
       }, MSG_TIMEOUT);
+}
+
+const modalStorageCheck = (modal) => {
+    if (!localStorage.getItem(MODAL_LOCALSTORAGE_KEY) || localStorage.getItem(MODAL_LOCALSTORAGE_KEY) === 'false') {
+        modal.style.opacity = 1;
+        modal.style.zIndex  = '999';
+    }
+}
+
+const fetchUrl = (url, formData) => {
+    fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    })
+      .then((resp) => resp.json())
+      .then((data) => {
+        console.log("Respuesta: ", data);
+      })
+      .catch((err) => {
+        console.error("Error al enviar los datos: ", err);
+      });
 }
 
 // LISTENERS
@@ -142,24 +169,80 @@ document.addEventListener("DOMContentLoaded", () => {
                 'email': email
             }
 
-            fetch('https://jsonplaceholder.typicode.com/users', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(formData)
-            })
-            .then( resp => resp.json() )
-            .then( data => {
-                console.log('Respuesta: ', data);
-            })
-            .catch( err => {
-                console.error('Error al enviar los datos: ', err);
-            })
+            fetchUrl(FETCH_URL_STRING, formData);
 
-        } else {
-            console.log("Error en formulario");
         }
     });
-    
+
+    // SUBSCRIBE MODAL
+    const modal = document.getElementById("subscribe");
+    const closeButton = document.getElementById("closeBtn");
+    const form = document.getElementById("subscribeForm");
+    const emailInput = document.getElementById("emailInput");
+
+    // AL CARGAR LA PAGINA ESPERA 5 SEGUNDOS, SI EL MODAL NO SE HA CERRADO PREVIAMENTE, LO ABRE
+    setTimeout(() => {
+        modalStorageCheck(modal);
+    }, 5000);
+
+    // COMPRUEBA EL SCROLL PARA LANZAR EL MODAL, ACTUALMENTE 25%
+    window.addEventListener("scroll", () => {
+      const scrollHeight = document.documentElement.scrollHeight;
+      const clientHeight = document.documentElement.clientHeight;
+      const scrollPosition = window.scrollY || document.body.scrollTop + ((document.documentElement && document.documentElement.scrollTop) || 0);
+
+      if (scrollPosition / (scrollHeight - clientHeight) > 0.25) {
+        modalStorageCheck(modal);
+      }
+    });
+
+    // Cerrar el modal al hacer clic en el botón "X"
+    closeButton.addEventListener("click", () => {
+      modal.style.opacity = 0;
+      modal.style.zIndex  = '-1';
+      localStorage.setItem(MODAL_LOCALSTORAGE_KEY, "true");
+    });
+
+    // Cerrar el modal al hacer clic fuera de él
+    window.addEventListener("click", (event) => {
+      if (event.target == modal) {
+        modal.style.opacity = 0;
+        modal.style.zIndex  = '-1';
+        localStorage.setItem(MODAL_LOCALSTORAGE_KEY, "true");
+      }
+    });
+
+    // Cerrar el modal al presionar la tecla ESC
+    window.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        modal.style.opacity = 0;
+        modal.style.zIndex  = '-1';
+        localStorage.setItem(MODAL_LOCALSTORAGE_KEY, "true");
+      }
+    });
+
+    // ENVIO DEL FORMULARIO
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      const email = emailInput.value.trim();
+
+      if (emailIsValid(email)) {        
+        modal.style.opacity = 0;
+        modal.style.zIndex  = '-1';
+
+        const formData = {
+            'email': email
+        }
+
+        fetchUrl(FETCH_URL_STRING, formData)
+        
+        localStorage.setItem(MODAL_LOCALSTORAGE_KEY, "true");
+      }
+    });
+
+    // Función para validar el formato del email
+    function emailIsValid(email) {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    }
 });
