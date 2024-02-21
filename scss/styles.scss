@@ -22,6 +22,14 @@ $green: #55DFB4;
 
 // }
 
+.section-gap {
+  padding-top: 3rem;
+}
+
+.negative-gap {
+  margin-bottom: -4rem;
+}
+
 .main__section-title {
   font-size: 30px;
   font-family: Raleway;
@@ -45,13 +53,13 @@ $green: #55DFB4;
   font-weight: 700;
   display: none;
   position: fixed;
-  bottom: 20px;
+  bottom: 100px;
   right: 20px;
   padding: 15px 20px;
-  background-color: rgba(0, 123, 255, 0.8);
+  background-color: white(0, 123, 255, 0.8);
   box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
-  color: #fff;
-  border: none;
+  color: black;
+  border: 1px ridge grey;
   border-radius: 45%;
   cursor: pointer;
   z-index: 9999;
@@ -64,7 +72,6 @@ $green: #55DFB4;
   }
 
   #returnToTopButton:hover {
-    background-color: #0056b3;
     transform: translateY(-4px);
   }
   

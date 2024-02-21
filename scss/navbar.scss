@@ -1,5 +1,11 @@
 .header {
-
+    position: fixed;
+    width: 100%;
+    top: 0;
+    box-shadow: 0 3px 6px grey;
+    z-index: 99;
+    padding: 0 5%;
+    background-color: white;
 
     .header__logo {
         color: $blue;
@@ -14,10 +20,10 @@
         align-items: center;
         justify-content: space-between;
         background-color: white;
-        box-shadow: 0 3px 6px grey;
+        
         color: black;
-        padding: 1.8% 5%;
-        margin-bottom: 1rem;
+        
+        // margin-bottom: 1rem;
     }
 
     .header__nav-list {
@@ -34,6 +40,7 @@
     }
 
     .header__nav-link {
+        position: relative;
         font-family: Open Sans;
         font-weight: 700;
         font-size: 11px;
@@ -44,6 +51,17 @@
 
         &:hover {
             color: black;
+        }
+
+        &:hover::after {
+            position: absolute;
+            content: "";
+            height: 3px;
+            width: 100%;
+            left: 0;
+            bottom: -22px;
+            background-color: $blue;
+            z-index: 999;
         }
     }
 
@@ -105,7 +123,6 @@
 
         .header__nav {
             padding: 3% 5%;
-            margin-bottom: 1rem;
         }
 
         .menu__button-container {
