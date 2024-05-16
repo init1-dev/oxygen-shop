@@ -1,102 +1,17 @@
-const MEDIA_QUERY = 1000;
-const TO_TOP_SCROLL_RANGE = 500;
-const TO_TOP_WAIT_MS = 200;
-const MSG_TIMEOUT = 3000;
+import { returnToTop, cambiarImagen, contactFormReset, modalStorageCheck, fetchUrl, ImageSwiper, CONTACT_FORM_NAME_ID, CONTACT_FORM_EMAIL_ID } from './functions.js';
+import { currencies, fetchCurrencies } from './fetchCurrencies.js';
 
-const CONTACT_FORM_ID = 'contact__form';
-const CONTACT_FORM_NAME_ID = 'form-name';
-const CONTACT_FORM_EMAIL_ID = 'form-email';
+const TO_TOP_SCROLL_RANGE = 500;
+
+console.log(ImageSwiper);
+
 const CONTACT_FORM_CHECKBOX_ID = 'form__checkbox';
 const CUSTOM_CHECKBOX_ID = 'custom-checkbox';
-const MSG_ID = 'form__submit-msg';
 const FETCH_URL_STRING = 'https://jsonplaceholder.typicode.com/users';
 
 const MODAL_LOCALSTORAGE_KEY = '__modal__Closed__';
 
 const DEFAULT_CURRENCY = 'usd';
-
-let currencies = {};
-
-const returnToTop = () => {
-    setTimeout(() => {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
-    }, TO_TOP_WAIT_MS);
-}
-
-const cambiarImagen = () => {
-    const imagen = document.getElementById('pc-image');
-    imagen.src = (window.innerWidth > MEDIA_QUERY)
-        ? './assets/img/pcshape.png' 
-        : './assets/img/pcshape2.png';
-}
-
-const contactFormReset = () => {
-    document.getElementById(CONTACT_FORM_NAME_ID).style.borderColor = '#95989A';
-    document.getElementById(CONTACT_FORM_EMAIL_ID).style.borderColor = '#95989A';
-    document.getElementById(CUSTOM_CHECKBOX_ID).style.borderColor = '#95989A';
-    document.getElementById(CONTACT_FORM_ID).reset();
-}
-
-const modalStorageCheck = (modal) => {
-    if (!localStorage.getItem(MODAL_LOCALSTORAGE_KEY) || localStorage.getItem(MODAL_LOCALSTORAGE_KEY) === 'false') {
-        modal.style.opacity = 1;
-        modal.style.zIndex  = '999';
-    }
-}
-
-const fetchUrl = (url, formData, message) => {
-    fetch(url, {
-    method: "POST",
-    headers: {
-        "Content-Type": "application/json",
-    },
-    body: JSON.stringify(formData),
-    })
-    .then((resp) => resp.json())
-    .then((data) => {
-        console.log("Respuesta: ", data);
-        Swal.fire({
-            icon: 'success',
-            title: 'Thanks!',
-            text: message,
-            confirmButtonText: 'Close'
-        })
-    })
-    .catch((err) => {
-        console.error("Error al enviar los datos: ", err);
-    });
-}
-
-const fetchCurrencies = () => {
-    fetch(`https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/usd.json`)
-    .then((response) => response.json())
-    .then((data) => {
-        currencies = {
-            usd: {
-                basic: '$10',
-                pro: '$25',
-                premium: '$60'
-            },
-            eur: {
-                basic: `${parseFloat(10 * data.usd.eur).toFixed(2)}€`,
-                pro: `${parseFloat(25 * data.usd.eur).toFixed(2)}€`,
-                premium: `${parseFloat(60 * data.usd.eur).toFixed(2)}€`
-            },
-            gbp: {
-                basic: `${parseFloat(10 * data.usd.gbp).toFixed(2)}£`,
-                pro: `${parseFloat(25 * data.usd.gbp).toFixed(2)}£`,
-                premium: `${parseFloat(60 * data.usd.gbp).toFixed(2)}£`
-            }
-        }
-        console.log(currencies);
-    })
-    .catch((error) => {
-        console.error("Error al obtener los tipos de cambio:", error);
-    });
-}
 
 document.addEventListener("DOMContentLoaded", () => {
     fetchCurrencies();
@@ -295,18 +210,3 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
-const ImageSwiper = new Swiper(".images-swiper", {
-    grabCursor: true,
-    slidesPerView: 1,
-    initialSlide: 0,
-    navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-    },
-    breakpoints: {
-        1000: {
-            slidesPerView: 1,
-            centeredSlides: true
-        }
-    }
-});

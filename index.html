@@ -6,6 +6,7 @@
     <title>OXYGENShop</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
     <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.11.0/dist/sweetalert2.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="./css/styles.css">
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.11.0/dist/sweetalert2.all.min.js" defer></script>
@@ -13,8 +14,9 @@
 </head>
 <body>
     <div id="percentageScroller"></div>
-    <button id="returnToTopButton">^</button>
-    <!--    HEADER - NAVBAR     -->
+    <button id="returnToTopButton">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
     <header class="header">
         <nav class="header__nav">
             <h1 class="header__logo">OXYGENShop</h1>
@@ -42,10 +44,8 @@
         </nav>
     </header>
 
-    <!--    MAIN     -->
     <main class="main">
 
-        <!--    SELL MORE     -->
         <section class="main__section-sell-more negative-gap">
             <h1 class="main__section-h1">Sell More!</h1>
             <p class="main__section-p">Open shop on our platform and increase your sales</p>
@@ -69,7 +69,6 @@
 
         </section>
 
-        <!--    WHY US     -->
         <section id="why-us" class="main__section-whyus section-gap">
             <h2 class="main__section-title">The most popular sales platform in country</h2>
 
@@ -100,7 +99,6 @@
             </div>
         </section>
 
-        <!--    BENEFITS     -->
         <section id="benefits" class="main__section-benefits negative-gap">
             <div class="benefits__item item-pc">
                 <div class="benefits__item-img img-pc">
@@ -136,7 +134,6 @@
             </div>
         </section>
 
-        <!--    PRICES     -->
         <section id="prices" class="main__section-prices section-gap negative-gap">
             <h2 class="main__section-title">Pricing</h2>
 
@@ -145,7 +142,7 @@
                 <option value="usd">USD</option>
                 <option value="gbp">GBP</option>
             </select>
-              
+
 
             <div class="main__section-prices-content">
                 <div class="prices__item item-basic">
@@ -196,7 +193,6 @@
             </div>
         </section>
         
-        <!--    CONTACT     -->
         <section id="contact" class="main__section-contact section-gap">
             <div class="section__contact-info-container">
                 <div class="section__contact-info-block">
@@ -210,7 +206,7 @@
                     </span>
                     <span class="contact__info-p">
                         <img class="contact__info-img" src="./assets/img/phone.svg" alt="telefono" />
-                        <span>+34 123 456 789</span>
+                        <span>+34 659 52 85 22</span>
                     </span>
                 </div>
             </div>
@@ -242,7 +238,6 @@
         </section>
     </main>
 
-    <!--    FOOTER     -->
     <footer class="footer">
         <section class="footer__copyright">
             <h2 class="footer__copyright-title">OXYGEN Shop</h2>
@@ -255,7 +250,6 @@
         </section>
     </footer>
 
-    <!-- SUBSCRIBE MODAL -->
     <div id="subscribe" class="modal">
         <div class="modal-content">
             <div class="modal-title">

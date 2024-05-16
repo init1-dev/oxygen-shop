@@ -1,1 +1,14 @@
-{}
+{
+    "name": "my-project",
+    "version": "1.0.0",
+    "type": "module",
+    "scripts": {
+        "start": "node index.js"
+    },
+    "devDependencies": {
+        "@eslint/js": "^9.2.0",
+        "eslint": "^9.2.0",
+        "eslint-plugin-node": "^11.1.0",
+        "globals": "^15.2.0"
+    }
+}
