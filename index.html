@@ -4,8 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OXYGENShop</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.11.0/dist/sweetalert2.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./css/styles.css">
-    <script type="module" src="./js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.11.0/dist/sweetalert2.all.min.js" defer></script>
+    <script type="module" src="./js/main.js" defer></script>
 </head>
 <body>
     <div id="percentageScroller"></div>
@@ -46,18 +50,23 @@
             <h1 class="main__section-h1">Sell More!</h1>
             <p class="main__section-p">Open shop on our platform and increase your sales</p>
             <button class="main__section-btn">Open your shop</button>
-            <div class="sell-more__img-container">
-                <div class="slider-container">
-                    <div class="slider">
-                        <div class="slide"><img src="./assets/img/slide1.jpg" alt="Slide 1"></div>
-                        <div class="slide"><img src="./assets/img/slide2.jpg" alt="Slide 2"></div>
-                        <div class="slide"><img src="./assets/img/slide3.jpg" alt="Slide 3"></div>
+
+            <div class="swiper images-swiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <img src="./assets/img/slide1.jpg" alt="Imagen 1">
                     </div>
-                    <div class="prev">&#10094;</div>
-                    <div class="next">&#10095;</div>
-                    <div class="dots-container"></div>
-                </div>                  
+                    <div class="swiper-slide">
+                        <img src="./assets/img/slide2.jpg" alt="Imagen 1">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="./assets/img/slide3.jpg" alt="Imagen 1">
+                    </div>
+                </div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
             </div>
+
         </section>
 
         <!--    WHY US     -->
@@ -95,7 +104,7 @@
         <section id="benefits" class="main__section-benefits negative-gap">
             <div class="benefits__item item-pc">
                 <div class="benefits__item-img img-pc">
-                     <img id="pc-image" alt="computer" />
+                    <img id="pc-image" alt="computer" />
                 </div>
                 <div class="benefits__item-content">
                     <h3 class="benefits__item-h3">Be always first</h3>
@@ -206,18 +215,18 @@
                 </div>
             </div>
 
-            <form id="contact__form" class="contact__form">
+            <form id="contact__form" class="contact__form" method="POST">
                 <label for="form-name" class="form__label input-name">
                     NAME
-                    <input id="form-name" class="form__input" type="text" name="person" placeholder="Enter your name" value="PRUEBA"/>
+                    <input id="form-name" class="form__input" type="text" name="person" placeholder="Enter your name" />
                 </label>
 
                 <label for="form-email" class="form__label input-email">
                     EMAIL
-                    <input id="form-email" class="form__input" type="email" name="email" placeholder="Enter your email address" value="PRUEBA@email.com"/>
+                    <input id="form-email" class="form__input" type="email" name="email" placeholder="Enter your email address" />
                 </label>
 
-                <label class="form__label form__label-checkbox" id="accept">
+                <label for="form__checkbox" class="form__label form__label-checkbox" id="accept">
                     <input id="form__checkbox" class="form__checkbox" type="checkbox" name="accept" />
                     <span id="custom-checkbox" class="custom-checkbox"></span>
                     <p class="form__label__p">I hereby give consent for my personal data included in my application to be processed for the purposes of the recruitment process under the European Parliament’s and Council of the European Union Regulation on the Protection of Natural Persons as of 27 April 2016, with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (Data Protection Directive)</p>
@@ -254,12 +263,11 @@
                 <h2>Subscribe to our newsletter</h2>
                 <p>Stay informed! Subscribe to our newsletter for the latest updates, exclusive offers, and more!</p>
             </div>
-            <form id="subscribeForm">
-                <input type="email" id="emailInput" placeholder="Enter your email" value="PRUEBA@email.com">
+            <form id="subscribeForm" method="POST">
+                <input type="email" id="emailInput" placeholder="Enter your email" >
                 <button id="subscribeBtn" type="submit">Subscribe</button>
             </form>
         </div>
     </div>
-
 </body>
 </html>

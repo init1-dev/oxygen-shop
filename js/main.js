@@ -1,9 +1,8 @@
-// CONFIG
 const MEDIA_QUERY = 1000;
 const TO_TOP_SCROLL_RANGE = 500;
 const TO_TOP_WAIT_MS = 200;
 const MSG_TIMEOUT = 3000;
-// CONTACT FORM
+
 const CONTACT_FORM_ID = 'contact__form';
 const CONTACT_FORM_NAME_ID = 'form-name';
 const CONTACT_FORM_EMAIL_ID = 'form-email';
@@ -11,14 +10,13 @@ const CONTACT_FORM_CHECKBOX_ID = 'form__checkbox';
 const CUSTOM_CHECKBOX_ID = 'custom-checkbox';
 const MSG_ID = 'form__submit-msg';
 const FETCH_URL_STRING = 'https://jsonplaceholder.typicode.com/users';
-// MODAL CFG
+
 const MODAL_LOCALSTORAGE_KEY = '__modal__Closed__';
-// CURRENCIES (usd, eur or gbp)
+
 const DEFAULT_CURRENCY = 'usd';
 
 let currencies = {};
 
-// FUNCIONES
 const returnToTop = () => {
     setTimeout(() => {
         window.scrollTo({
@@ -42,14 +40,6 @@ const contactFormReset = () => {
     document.getElementById(CONTACT_FORM_ID).reset();
 }
 
-const successMsg = () => {
-    const msgSpan = document.getElementById(MSG_ID)
-    msgSpan.style.opacity = 1;
-      setTimeout(function() {
-        msgSpan.style.opacity = 0;
-      }, MSG_TIMEOUT);
-}
-
 const modalStorageCheck = (modal) => {
     if (!localStorage.getItem(MODAL_LOCALSTORAGE_KEY) || localStorage.getItem(MODAL_LOCALSTORAGE_KEY) === 'false') {
         modal.style.opacity = 1;
@@ -57,21 +47,27 @@ const modalStorageCheck = (modal) => {
     }
 }
 
-const fetchUrl = (url, formData) => {
+const fetchUrl = (url, formData, message) => {
     fetch(url, {
-      method: "POST",
-      headers: {
+    method: "POST",
+    headers: {
         "Content-Type": "application/json",
-      },
-      body: JSON.stringify(formData),
+    },
+    body: JSON.stringify(formData),
     })
-      .then((resp) => resp.json())
-      .then((data) => {
+    .then((resp) => resp.json())
+    .then((data) => {
         console.log("Respuesta: ", data);
-      })
-      .catch((err) => {
+        Swal.fire({
+            icon: 'success',
+            title: 'Thanks!',
+            text: message,
+            confirmButtonText: 'Close'
+        })
+    })
+    .catch((err) => {
         console.error("Error al enviar los datos: ", err);
-      });
+    });
 }
 
 const fetchCurrencies = () => {
@@ -102,22 +98,21 @@ const fetchCurrencies = () => {
     });
 }
 
-// LISTENERS
 document.addEventListener("DOMContentLoaded", () => {
     fetchCurrencies();
+
+    const subForm = document.getElementById("subscribeForm");
+    const contactForm = document.getElementById("contact__form");
     
-    // CONTROL DEL MENU MOVIL
     const menuToggle = document.getElementById("header__menu-toggle");
     const menu = document.querySelector(".header__nav-list");
 
-    // OCULTAR MENU MOVIL CUANDO SE HACE CLICK EN UN ENLACE
     menu.querySelectorAll("a").forEach((link) => {
         link.addEventListener("click", function() {
             menuToggle.checked = false;
         });
     });
 
-    // OCULTAR MENU MOVIL CUANDO SE HACE CLICK FUERA DEL MENU
     document.addEventListener("click", (event) => {
         const target = event.target;
         if (!target.closest(".header__nav") && menuToggle.checked) {
@@ -125,7 +120,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // PERCENTAGE SCROLL
     window.addEventListener("scroll", () => {
         let scrollPosition = window.scrollY;
         let totalHeight = document.body.scrollHeight - window.innerHeight;
@@ -133,7 +127,6 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("percentageScroller").style.width = percentage + "%";
     });
 
-    // BOTON TO TOP
     window.addEventListener('scroll', () => {
         let returnToTopButton = document.getElementById('returnToTopButton');
         returnToTopButton.style.display = (window.scrollY > TO_TOP_SCROLL_RANGE) ? 'block' : 'none';
@@ -143,12 +136,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     toTopButton.addEventListener('click', returnToTop);
 
-    // CAMBIO DE IMAGEN
     window.addEventListener('resize', cambiarImagen);
     window.addEventListener('load', cambiarImagen);
 
-    // VALIDACION DEL FORMULARIO
-    document.getElementById(CONTACT_FORM_ID).addEventListener('submit', (event) => {
+    contactForm.addEventListener('submit', (event) => {
         event.preventDefault();
     
         const NAME_VALUE = document.getElementById(CONTACT_FORM_NAME_ID).value.trim();
@@ -159,7 +150,6 @@ document.addEventListener("DOMContentLoaded", () => {
         let emailOk = false;
         let isChecked = false;
     
-        // Validamos nombre
         let nameInput = document.getElementById(CONTACT_FORM_NAME_ID);
         if (NAME_VALUE.length < 2 || NAME_VALUE.length > 100) {
             nameInput.style.borderColor = 'red';
@@ -169,7 +159,6 @@ document.addEventListener("DOMContentLoaded", () => {
             nameOk = true;
         }
     
-        // Validamos email
         let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         let emailInput = document.getElementById(CONTACT_FORM_EMAIL_ID);
         if (!emailRegex.test(EMAIL_VALUE)) {
@@ -180,7 +169,6 @@ document.addEventListener("DOMContentLoaded", () => {
             emailOk = true;
         }
 
-        // Validamos checkbox
         let checkbox = document.getElementById(CUSTOM_CHECKBOX_ID);
         if (!IS_CHECKED) {
             checkbox.style.borderColor = 'red';
@@ -195,100 +183,89 @@ document.addEventListener("DOMContentLoaded", () => {
             let email = document.getElementById(CONTACT_FORM_EMAIL_ID).value;
 
             contactFormReset();
-            successMsg();
 
             const formData = {
                 'name': nombre,
                 'email': email
             }
 
-            fetchUrl(FETCH_URL_STRING, formData);
+            fetchUrl(FETCH_URL_STRING, formData, "Form submitted successfully");
 
         }
     });
 
-    // SUBSCRIBE MODAL
     const modal = document.getElementById("subscribe");
     const closeButton = document.getElementById("closeBtn");
-    const form = document.getElementById("subscribeForm");
     const emailInput = document.getElementById("emailInput");
 
-    // AL CARGAR LA PAGINA ESPERA 5 SEGUNDOS, SI EL MODAL NO SE HA CERRADO PREVIAMENTE, LO ABRE
     setTimeout(() => {
         modalStorageCheck(modal);
     }, 5000);
 
-    // COMPRUEBA EL SCROLL PARA LANZAR EL MODAL, ACTUALMENTE 25%
     window.addEventListener("scroll", () => {
-      const scrollHeight = document.documentElement.scrollHeight;
-      const clientHeight = document.documentElement.clientHeight;
-      const scrollPosition = window.scrollY || document.body.scrollTop + ((document.documentElement && document.documentElement.scrollTop) || 0);
+        const scrollHeight = document.documentElement.scrollHeight;
+        const clientHeight = document.documentElement.clientHeight;
+        const scrollPosition = window.scrollY || document.body.scrollTop + ((document.documentElement && document.documentElement.scrollTop) || 0);
 
-      if (scrollPosition / (scrollHeight - clientHeight) > 0.25) {
+    if (scrollPosition / (scrollHeight - clientHeight) > 0.25) {
         modalStorageCheck(modal);
-      }
+    }
     });
 
-    // Cerrar el modal al hacer clic en el botón "X"
     closeButton.addEventListener("click", () => {
-      modal.style.opacity = 0;
-      modal.style.zIndex  = '-1';
-      localStorage.setItem(MODAL_LOCALSTORAGE_KEY, "true");
+        modal.style.opacity = 0;
+        modal.style.zIndex  = '-1';
+        localStorage.setItem(MODAL_LOCALSTORAGE_KEY, "true");
     });
 
-    // Cerrar el modal al hacer clic fuera de él
     window.addEventListener("click", (event) => {
-      if (event.target == modal) {
-        modal.style.opacity = 0;
-        modal.style.zIndex  = '-1';
-        localStorage.setItem(MODAL_LOCALSTORAGE_KEY, "true");
-      }
-    });
-
-    // Cerrar el modal al presionar la tecla ESC
-    window.addEventListener("keydown", (event) => {
-      if (event.key === "Escape") {
-        modal.style.opacity = 0;
-        modal.style.zIndex  = '-1';
-        localStorage.setItem(MODAL_LOCALSTORAGE_KEY, "true");
-      }
-    });
-
-    // ENVIO DEL FORMULARIO
-    form.addEventListener("submit", (event) => {
-      event.preventDefault();
-
-      const email = emailInput.value.trim();
-
-      if (emailIsValid(email)) {        
-        modal.style.opacity = 0;
-        modal.style.zIndex  = '-1';
-
-        const formData = {
-            'email': email
+        if (event.target == modal) {
+            modal.style.opacity = 0;
+            modal.style.zIndex  = '-1';
+            localStorage.setItem(MODAL_LOCALSTORAGE_KEY, "true");
         }
-
-        fetchUrl(FETCH_URL_STRING, formData)
-        
-        localStorage.setItem(MODAL_LOCALSTORAGE_KEY, "true");
-      }
     });
 
-    // VALIDAR FORMATO DEL EMAIL
+    window.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") {
+            modal.style.opacity = 0;
+            modal.style.zIndex  = '-1';
+            localStorage.setItem(MODAL_LOCALSTORAGE_KEY, "true");
+        }
+    });
+
+    subForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        const email = emailInput.value.trim();
+
+        if (emailIsValid(email)) {        
+            modal.style.opacity = 0;
+            modal.style.zIndex  = '-1';
+
+            const formData = {
+                'email': email
+            }
+
+            fetchUrl(FETCH_URL_STRING, formData, "Your subscription was sent successfully");
+            
+            localStorage.setItem(MODAL_LOCALSTORAGE_KEY, "true");
+        }
+    });
+
     function emailIsValid(email) {
-      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
     }
 
-    // PRICE CHANGER
     const currencySelector = document.getElementById("currency-selector");
 
     for (let i = 0; i < currencySelector.options.length; i++) {
-      if (currencySelector.options[i].value === DEFAULT_CURRENCY) {
-        currencySelector.options[i].selected = true;
-        break;
-      } else {
-          currencySelector.options[1].selected = true;
-      }
+        if (currencySelector.options[i].value === DEFAULT_CURRENCY) {
+            currencySelector.options[i].selected = true;
+            break;
+        } else {
+            currencySelector.options[1].selected = true;
+        }
     }
 
     currencySelector.addEventListener("change", function () {
@@ -316,57 +293,20 @@ document.addEventListener("DOMContentLoaded", () => {
             break;
         }
     });
+});
 
-    // SLIDER
-    const slides = document.querySelectorAll('.slide');
-    const dotsContainer = document.querySelector('.dots-container');
-    const prevBtn = document.querySelector('.prev');
-    const nextBtn = document.querySelector('.next');
-    let slideIndex = 0;
-    
-    // SLIDE ACTUAL
-    const showSlide = (index) => {
-        if (index < 0) {
-            slideIndex = slides.length - 1;
-        } else if (index >= slides.length) {
-            slideIndex = 0;
-        } else {
-            slideIndex = index;
+const ImageSwiper = new Swiper(".images-swiper", {
+    grabCursor: true,
+    slidesPerView: 1,
+    initialSlide: 0,
+    navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+    },
+    breakpoints: {
+        1000: {
+            slidesPerView: 1,
+            centeredSlides: true
         }
-    
-      // OCULTAR SLIDES Y MOSTRAR ACTUAL
-        slides.forEach((slide, i) => {
-            if (i === slideIndex) {
-                slide.style.display = 'block';
-                slide.classList.add('active');
-            } else {
-                slide.style.display = 'none';
-                slide.classList.remove('active');
-            }
-        });
-    
-      // ACTUALIZAR DOTS
-        const dots = document.querySelectorAll('.dot');
-        dots.forEach((dot, i) => {
-            dot.classList.toggle('active', i === slideIndex);
-        });
     }
-    
-    // CREAR DOTS, _ ES UNA CONVENCION QUE INDICA QUE EL VALOR NO SE UTILIZARA
-    slides.forEach((_, i) => {
-        const dot = document.createElement('span');
-        dot.classList.add('dot');
-        dot.addEventListener('click', () => showSlide(i));
-        dotsContainer.appendChild(dot);
-    });
-    
-    // BOTONES PREV Y NEXT
-    prevBtn.addEventListener('click', () => showSlide(slideIndex - 1));
-    nextBtn.addEventListener('click', () => showSlide(slideIndex + 1));
-    
-    // AVANCE AUTOMATICO
-    setInterval(() => showSlide(slideIndex + 1), 5000);
-    
-    // MOSTRAR PRIMER SLIDE AL CARGAR LA PAGINA
-    showSlide(slideIndex);
 });

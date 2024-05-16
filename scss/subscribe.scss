@@ -51,6 +51,18 @@
         align-items: center;
         gap: 1rem;
         margin: 1rem 0;
+
+        input {
+            outline: none;
+            border: 1px solid black;
+            transition: border 0.2s ease;
+
+            &:focus, &:focus-visible {
+                border: 1px solid #08A6E4;
+            }
+        }
+
+        
     }
     
     #subscribeBtn {
