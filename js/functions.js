@@ -1,4 +1,4 @@
-import { TO_TOP_WAIT_MS, CONTACT_FORM_NAME_ID, CONTACT_FORM_EMAIL_ID, CUSTOM_CHECKBOX_ID, CONTACT_FORM_ID, MODAL_LOCALSTORAGE_KEY } from "./globals.js";
+import { TO_TOP_WAIT_MS, CONTACT_FORM_ID, MODAL_LOCALSTORAGE_KEY } from "./globals.js";
 
 const Swal = window.swal;
 const Swiper = window.Swiper;
@@ -13,9 +13,13 @@ export const returnToTop = () => {
 }
 
 export const contactFormReset = () => {
-    document.getElementById(CONTACT_FORM_NAME_ID).style.borderColor = '#95989A';
-    document.getElementById(CONTACT_FORM_EMAIL_ID).style.borderColor = '#95989A';
-    document.getElementById(CUSTOM_CHECKBOX_ID).style.borderColor = '#95989A';
+    const inputs = document.querySelectorAll("#contact__form input");
+    inputs.forEach(input => {
+        console.log(input.classList.contains("br-ok"));
+        input.classList.contains("br-ok")
+            ? input.classList.add("br-reset")
+            : input.classList.add("br-check-reset")
+    })
     document.getElementById(CONTACT_FORM_ID).reset();
 }
 
@@ -36,10 +40,9 @@ export const fetchUrl = (url, formData, message) => {
     })
     .then((resp) => resp.json())
     .then((data) => {
-        console.log("Respuesta: ", data);
         Swal.fire({
             icon: 'success',
-            title: 'Thanks!',
+            title: `¡Thanks${data.name ? " " + data.name : ""}!`,
             text: message,
             confirmButtonText: 'Close'
         })

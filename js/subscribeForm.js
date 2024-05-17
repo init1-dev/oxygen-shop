@@ -12,9 +12,8 @@ export const subscribeForm = () => {
 
         const email = emailInput.value.trim();
 
-        if (emailIsValid(email)) {        
-            modal.style.opacity = 0;
-            modal.style.zIndex  = '-1';
+        if (emailIsValid(email)) {
+            modal.classList.add("modal-hide");
 
             const formData = {
                 'email': email
@@ -23,6 +22,8 @@ export const subscribeForm = () => {
             fetchUrl(FETCH_URL_STRING, formData, "Your subscription was sent successfully");
             
             localStorage.setItem(MODAL_LOCALSTORAGE_KEY, "true");
+        } else {
+            emailInput.classList.add("br-red");
         }
     });
 
@@ -48,14 +49,6 @@ export const subscribeForm = () => {
 
     window.addEventListener("click", (event) => {
         if (event.target == modal) {
-            modal.style.opacity = 0;
-            modal.style.zIndex  = '-1';
-            localStorage.setItem(MODAL_LOCALSTORAGE_KEY, "true");
-        }
-    });
-
-    window.addEventListener("keydown", (event) => {
-        if (event.key === "Escape") {
             modal.style.opacity = 0;
             modal.style.zIndex  = '-1';
             localStorage.setItem(MODAL_LOCALSTORAGE_KEY, "true");

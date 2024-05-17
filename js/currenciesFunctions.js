@@ -68,7 +68,6 @@ export const fetchCurrencies = () => {
                 premium: `${parseFloat(60 * data.usd.gbp).toFixed(2)}£`
             }
         }
-        console.log(currencies);
     })
     .catch((error) => {
         console.error("Error al obtener los tipos de cambio:", error);

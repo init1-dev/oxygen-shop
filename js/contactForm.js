@@ -1,4 +1,4 @@
-import { CONTACT_FORM_ID, CONTACT_FORM_NAME_ID, CONTACT_FORM_EMAIL_ID, CONTACT_FORM_CHECKBOX_ID, CUSTOM_CHECKBOX_ID, FETCH_URL_STRING } from './globals.js';
+import { CONTACT_FORM_ID, CONTACT_FORM_NAME_ID, CONTACT_FORM_EMAIL_ID, CONTACT_FORM_CHECKBOX_ID, FETCH_URL_STRING } from './globals.js';
 import { contactFormReset, fetchUrl } from './functions.js';
 
 export const contactForm = () => {
@@ -17,29 +17,29 @@ export const contactForm = () => {
     
         let nameInput = document.getElementById(CONTACT_FORM_NAME_ID);
         if (NAME_VALUE.length < 2 || NAME_VALUE.length > 100) {
-            nameInput.style.borderColor = 'red';
+            nameInput.classList.add('br-red');
             nameOk = false;
         } else {
-            nameInput.style.borderColor = '#20cd17';
+            nameInput.classList.add('br-ok');
             nameOk = true;
         }
     
         let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         let emailInput = document.getElementById(CONTACT_FORM_EMAIL_ID);
         if (!emailRegex.test(EMAIL_VALUE)) {
-            emailInput.style.borderColor = 'red';
+            emailInput.classList.add('br-red');
             emailOk = false;
         } else {
-            emailInput.style.borderColor = '#20cd17';
+            emailInput.classList.add('br-ok');
             emailOk = true;
         }
     
-        let checkbox = document.getElementById(CUSTOM_CHECKBOX_ID);
+        let checkbox = document.getElementById(CONTACT_FORM_CHECKBOX_ID);
         if (!IS_CHECKED) {
-            checkbox.style.borderColor = 'red';
+            checkbox.classList.add('br-check-red');
             isChecked = false;
         } else {
-            checkbox.style.borderColor = '#20cd17';
+            checkbox.classList.add('br-check-ok');
             isChecked = true;
         }
     
@@ -56,6 +56,23 @@ export const contactForm = () => {
     
             fetchUrl(FETCH_URL_STRING, formData, "Form submitted successfully");
     
+        } else {
+            const Swal = window.swal;
+            if(!nameOk || !emailOk) {
+                return Swal.fire({
+                    title: 'Error',
+                    text: "All inputs must be provided",
+                    confirmButtonText: 'Close'
+                })
+            }
+
+            if(!isChecked) {
+                return Swal.fire({
+                    title: 'Error',
+                    text: "Terms must be accepted",
+                    confirmButtonText: 'Close'
+                })
+            }
         }
     });
 }

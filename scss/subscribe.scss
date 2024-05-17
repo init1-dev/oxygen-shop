@@ -39,7 +39,6 @@
         font-weight: 400;
         font-size: 15px;
         padding: 0.5rem;
-        border-radius: 0.5rem;
         border: 1px solid $blue;
         width: 90%;
         margin-bottom: 1rem;
@@ -54,11 +53,12 @@
 
         input {
             outline: none;
-            border: 1px solid black;
+            border: unset;
+            border-bottom: 1px solid #95989A;
             transition: border 0.2s ease;
 
             &:focus, &:focus-visible {
-                border: 1px solid #08A6E4;
+                border-bottom: 1px solid #08A6E4;
             }
         }
 

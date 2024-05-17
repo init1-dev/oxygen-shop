@@ -1,4 +1,3 @@
-@charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
 .header {
   position: fixed;
@@ -406,7 +405,7 @@
   margin: 20px 5px;
 }
 .main__section-prices #currency-selector {
-  padding: 1rem;
+  padding: 0.5rem;
   border-radius: 0.5rem;
   margin: 2rem 0;
 }
@@ -627,13 +626,6 @@
   margin-top: 2rem;
 }
 .main__section-contact .form__checkbox {
-  width: 20px;
-  height: 20px;
-  vertical-align: top;
-  margin-top: 0.5rem;
-  display: none;
-}
-.main__section-contact .custom-checkbox {
   position: relative;
   display: inline-block;
   width: 20px;
@@ -645,20 +637,6 @@
   margin-top: 0.5rem;
   vertical-align: top;
   transition: border 0.4s ease-in-out;
-}
-.main__section-contact .custom-checkbox::after {
-  content: "✓";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -51%);
-  color: transparent;
-}
-.main__section-contact .form__checkbox:checked + .custom-checkbox {
-  background-color: white;
-}
-.main__section-contact .form__checkbox:checked + .custom-checkbox::after {
-  color: #08A6E4;
 }
 .main__section-contact .form__label__p {
   font-family: Open Sans;
@@ -804,7 +782,6 @@
   font-weight: 400;
   font-size: 15px;
   padding: 0.5rem;
-  border-radius: 0.5rem;
   border: 1px solid #08A6E4;
   width: 90%;
   margin-bottom: 1rem;
@@ -818,11 +795,12 @@
 }
 .modal #subscribeForm input {
   outline: none;
-  border: 1px solid black;
+  border: unset;
+  border-bottom: 1px solid #95989A;
   transition: border 0.2s ease;
 }
 .modal #subscribeForm input:focus, .modal #subscribeForm input:focus-visible {
-  border: 1px solid #08A6E4;
+  border-bottom: 1px solid #08A6E4;
 }
 .modal #subscribeBtn {
   font-family: Open Sans;
@@ -968,8 +946,36 @@
   }
   .main__section-title {
     font-size: 36px;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
   }
+}
+.br-red {
+  border-bottom: 1px solid red !important;
+}
+
+.br-ok {
+  border-bottom: 1px solid #20cd17 !important;
+}
+
+.br-reset {
+  border-bottom: 1px solid #95989A !important;
+}
+
+.br-check-red {
+  border: 1px solid red !important;
+}
+
+.br-check-ok {
+  border: 1px solid #20cd17 !important;
+}
+
+.br-check-reset {
+  border: 1px solid #95989A !important;
+}
+
+.modal-hide {
+  opacity: 0 !important;
+  z-index: -1 !important;
 }
 
 /*# sourceMappingURL=styles.css.map */
