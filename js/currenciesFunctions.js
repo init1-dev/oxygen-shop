@@ -43,7 +43,13 @@ export const currenciesListener = () => {
 
 export const fetchCurrencies = () => {
     fetch(`https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/usd.json`)
-    .then((response) => response.json())
+    .then((response) => {
+        if(response.ok && response.status === 200){
+            return response.json()
+        } else {
+            throw new Error("Error in API call");
+        }
+    })
     .then((data) => {
         currencies = {
             usd: {
