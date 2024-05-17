@@ -1,0 +1,10 @@
+export const TO_TOP_WAIT_MS = 200;
+export const CONTACT_FORM_ID = 'contact__form';
+export const MODAL_LOCALSTORAGE_KEY = '__modal__Closed__';
+export const CONTACT_FORM_NAME_ID = 'form-name';
+export const CONTACT_FORM_EMAIL_ID = 'form-email';
+export const CONTACT_FORM_CHECKBOX_ID = 'form__checkbox';
+export const CUSTOM_CHECKBOX_ID = 'custom-checkbox';
+export const FETCH_URL_STRING = 'https://jsonplaceholder.typicode.com/users';
+export const DEFAULT_CURRENCY = 'usd';
+export const TO_TOP_SCROLL_RANGE = 500;

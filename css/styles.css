@@ -299,8 +299,10 @@
   max-width: 386px;
   z-index: 1;
 }
-.main__section-benefits .img-pc {
-  position: relative;
+@media only screen and (min-width: 1000px) {
+  .main__section-benefits #pc-image {
+    content: url("../assets/img/pcshape2.png");
+  }
 }
 .main__section-benefits .img-trumpet {
   width: auto;

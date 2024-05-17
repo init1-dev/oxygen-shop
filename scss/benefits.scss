@@ -32,13 +32,12 @@
         z-index: 1;
     }
 
-    .img-pc {
-        position: relative;
-    }
+    #pc-image {
 
-    // .img-phone {
-        
-    // }
+        @media only screen and (min-width: 1000px) {
+            content: url('../assets/img/pcshape2.png');
+        }
+    }
 
     .img-trumpet {
         width: auto;
@@ -46,10 +45,6 @@
         padding: 1rem;
         border-radius: 0 0 0.3rem 0.3rem;
     }
-
-    // .benefits__item-content {
-
-    // }
 
     .benefits__item-h3 {
         color: #333;

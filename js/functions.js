@@ -1,11 +1,4 @@
-const TO_TOP_WAIT_MS = 200;
-const MEDIA_QUERY = 1000;
-const CONTACT_FORM_ID = 'contact__form';
-const CUSTOM_CHECKBOX_ID = 'custom-checkbox';
-const MODAL_LOCALSTORAGE_KEY = '__modal__Closed__';
-
-export const CONTACT_FORM_NAME_ID = 'form-name';
-export const CONTACT_FORM_EMAIL_ID = 'form-email';
+import { TO_TOP_WAIT_MS, CONTACT_FORM_NAME_ID, CONTACT_FORM_EMAIL_ID, CUSTOM_CHECKBOX_ID, CONTACT_FORM_ID, MODAL_LOCALSTORAGE_KEY } from "./globals.js";
 
 export const returnToTop = () => {
     setTimeout(() => {
@@ -14,13 +7,6 @@ export const returnToTop = () => {
             behavior: 'smooth'
         });
     }, TO_TOP_WAIT_MS);
-}
-
-export const cambiarImagen = () => {
-    const imagen = document.getElementById('pc-image');
-    imagen.src = (window.innerWidth > MEDIA_QUERY)
-        ? './assets/img/pcshape.png' 
-        : './assets/img/pcshape2.png';
 }
 
 export const contactFormReset = () => {
@@ -75,3 +61,7 @@ export const ImageSwiper = new Swiper(".images-swiper", {
         }
     }
 });
+
+export function emailIsValid(email) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}

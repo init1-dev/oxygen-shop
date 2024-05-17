@@ -1,23 +1,17 @@
-import { returnToTop, cambiarImagen, contactFormReset, modalStorageCheck, fetchUrl, ImageSwiper, CONTACT_FORM_NAME_ID, CONTACT_FORM_EMAIL_ID } from './functions.js';
-import { currencies, fetchCurrencies } from './fetchCurrencies.js';
+import { returnToTop, ImageSwiper } from './functions.js';
+import { currenciesListener, fetchCurrencies } from './currenciesFunctions.js';
+import { contactForm } from './contactForm.js';
+import { subscribeForm } from './subscribeForm.js';
+import { TO_TOP_SCROLL_RANGE } from './globals.js';
 
-const TO_TOP_SCROLL_RANGE = 500;
 
 console.log(ImageSwiper);
 
-const CONTACT_FORM_CHECKBOX_ID = 'form__checkbox';
-const CUSTOM_CHECKBOX_ID = 'custom-checkbox';
-const FETCH_URL_STRING = 'https://jsonplaceholder.typicode.com/users';
-
-const MODAL_LOCALSTORAGE_KEY = '__modal__Closed__';
-
-const DEFAULT_CURRENCY = 'usd';
-
 document.addEventListener("DOMContentLoaded", () => {
     fetchCurrencies();
-
-    const subForm = document.getElementById("subscribeForm");
-    const contactForm = document.getElementById("contact__form");
+    currenciesListener();
+    contactForm();
+    subscribeForm();
     
     const menuToggle = document.getElementById("header__menu-toggle");
     const menu = document.querySelector(".header__nav-list");
@@ -50,163 +44,4 @@ document.addEventListener("DOMContentLoaded", () => {
     const toTopButton = document.getElementById('returnToTopButton');
 
     toTopButton.addEventListener('click', returnToTop);
-
-    window.addEventListener('resize', cambiarImagen);
-    window.addEventListener('load', cambiarImagen);
-
-    contactForm.addEventListener('submit', (event) => {
-        event.preventDefault();
-    
-        const NAME_VALUE = document.getElementById(CONTACT_FORM_NAME_ID).value.trim();
-        const EMAIL_VALUE = document.getElementById(CONTACT_FORM_EMAIL_ID).value.trim();
-        const IS_CHECKED = document.getElementById(CONTACT_FORM_CHECKBOX_ID).checked;
-
-        let nameOk = false;
-        let emailOk = false;
-        let isChecked = false;
-    
-        let nameInput = document.getElementById(CONTACT_FORM_NAME_ID);
-        if (NAME_VALUE.length < 2 || NAME_VALUE.length > 100) {
-            nameInput.style.borderColor = 'red';
-            nameOk = false;
-        } else {
-            nameInput.style.borderColor = '#20cd17';
-            nameOk = true;
-        }
-    
-        let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        let emailInput = document.getElementById(CONTACT_FORM_EMAIL_ID);
-        if (!emailRegex.test(EMAIL_VALUE)) {
-            emailInput.style.borderColor = 'red';
-            emailOk = false;
-        } else {
-            emailInput.style.borderColor = '#20cd17';
-            emailOk = true;
-        }
-
-        let checkbox = document.getElementById(CUSTOM_CHECKBOX_ID);
-        if (!IS_CHECKED) {
-            checkbox.style.borderColor = 'red';
-            isChecked = false;
-        } else {
-            checkbox.style.borderColor = '#20cd17';
-            isChecked = true;
-        }
-
-        if(nameOk && emailOk && isChecked) {
-            let nombre = document.getElementById(CONTACT_FORM_NAME_ID).value;
-            let email = document.getElementById(CONTACT_FORM_EMAIL_ID).value;
-
-            contactFormReset();
-
-            const formData = {
-                'name': nombre,
-                'email': email
-            }
-
-            fetchUrl(FETCH_URL_STRING, formData, "Form submitted successfully");
-
-        }
-    });
-
-    const modal = document.getElementById("subscribe");
-    const closeButton = document.getElementById("closeBtn");
-    const emailInput = document.getElementById("emailInput");
-
-    setTimeout(() => {
-        modalStorageCheck(modal);
-    }, 5000);
-
-    window.addEventListener("scroll", () => {
-        const scrollHeight = document.documentElement.scrollHeight;
-        const clientHeight = document.documentElement.clientHeight;
-        const scrollPosition = window.scrollY || document.body.scrollTop + ((document.documentElement && document.documentElement.scrollTop) || 0);
-
-    if (scrollPosition / (scrollHeight - clientHeight) > 0.25) {
-        modalStorageCheck(modal);
-    }
-    });
-
-    closeButton.addEventListener("click", () => {
-        modal.style.opacity = 0;
-        modal.style.zIndex  = '-1';
-        localStorage.setItem(MODAL_LOCALSTORAGE_KEY, "true");
-    });
-
-    window.addEventListener("click", (event) => {
-        if (event.target == modal) {
-            modal.style.opacity = 0;
-            modal.style.zIndex  = '-1';
-            localStorage.setItem(MODAL_LOCALSTORAGE_KEY, "true");
-        }
-    });
-
-    window.addEventListener("keydown", (event) => {
-        if (event.key === "Escape") {
-            modal.style.opacity = 0;
-            modal.style.zIndex  = '-1';
-            localStorage.setItem(MODAL_LOCALSTORAGE_KEY, "true");
-        }
-    });
-
-    subForm.addEventListener("submit", (event) => {
-        event.preventDefault();
-
-        const email = emailInput.value.trim();
-
-        if (emailIsValid(email)) {        
-            modal.style.opacity = 0;
-            modal.style.zIndex  = '-1';
-
-            const formData = {
-                'email': email
-            }
-
-            fetchUrl(FETCH_URL_STRING, formData, "Your subscription was sent successfully");
-            
-            localStorage.setItem(MODAL_LOCALSTORAGE_KEY, "true");
-        }
-    });
-
-    function emailIsValid(email) {
-        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-    }
-
-    const currencySelector = document.getElementById("currency-selector");
-
-    for (let i = 0; i < currencySelector.options.length; i++) {
-        if (currencySelector.options[i].value === DEFAULT_CURRENCY) {
-            currencySelector.options[i].selected = true;
-            break;
-        } else {
-            currencySelector.options[1].selected = true;
-        }
-    }
-
-    currencySelector.addEventListener("change", function () {
-        const selectedCurrency = this.value;
-
-        const basicPrice = document.querySelector(".item-price-red");
-        const proPrice = document.querySelector(".item-price-blue");
-        const premiumPrice = document.querySelector(".item-price-green");
-
-        switch (selectedCurrency) {
-            case "usd":
-                basicPrice.textContent = currencies.usd.basic;
-                proPrice.textContent = currencies.usd.pro;
-                premiumPrice.textContent = currencies.usd.premium;
-            break;
-            case "eur":
-                basicPrice.textContent = currencies.eur.basic;
-                proPrice.textContent = currencies.eur.pro;
-                premiumPrice.textContent = currencies.eur.premium;
-            break;
-            case "gbp":
-                basicPrice.textContent = currencies.gbp.basic;
-                proPrice.textContent = currencies.gbp.pro;
-                premiumPrice.textContent = currencies.gbp.premium;
-            break;
-        }
-    });
 });
-
