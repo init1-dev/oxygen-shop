@@ -1,5 +1,8 @@
 import { TO_TOP_WAIT_MS, CONTACT_FORM_NAME_ID, CONTACT_FORM_EMAIL_ID, CUSTOM_CHECKBOX_ID, CONTACT_FORM_ID, MODAL_LOCALSTORAGE_KEY } from "./globals.js";
 
+const Swal = window.swal;
+const Swiper = window.Swiper;
+
 export const returnToTop = () => {
     setTimeout(() => {
         window.scrollTo({
