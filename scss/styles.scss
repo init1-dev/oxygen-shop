@@ -62,6 +62,7 @@ $submitOK: #25ad1e;
     cursor: pointer;
     z-index: 9999;
     transition: transform 0.2s ease 0s;
+    filter: drop-shadow(rgba(0, 0, 0, 0.6) 1px 1px 2px);
 }
 
 .swiper {
